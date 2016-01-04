@@ -11,19 +11,13 @@ int main(int argc, const char * argv[]) {
     int n;
     scanf("%d",&n);
     
-    int arr[n][n];
-    for(int r=0;r<n;r++)
+    int arr[10][10]={0};
+    arr[0][0]=1;
+    for(int r=1;r<=n;r++)
     {
-        for(int i=0;i<=r;i++)
+        for(int i=1;i<=r;i++)
         {
-            if(r==i||i==0)
-            {
-                arr[r][i]=1;
-            }
-            else
-            {
-                arr[r][i]=arr[r-1][i-1]+arr[r-1][i];
-            }
+            arr[r][i]=arr[r-1][i-1]+arr[r-1][i];
             printf("%d",arr[r][i]);
         }
         printf("\n");
