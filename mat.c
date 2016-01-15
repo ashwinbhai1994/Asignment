@@ -69,7 +69,14 @@ int main(int argc, const char * argv[]) {
          {
              for(int j=0;j<4;j++)
              {
-                 printf("%d",mat[i][j]);
+                 if(mat[i][j])
+                 {
+                    printf("| %d |",mat[i][j]);
+                 }
+                 else
+                 {
+                     printf(" ");
+                 }
              }
              printf("\n");
          }
@@ -99,7 +106,14 @@ int main(int argc, const char * argv[]) {
     {
         for(int j=0;j<4;j++)
         {
-            printf("%d",mat[i][j]);
+            if(mat[i][j])
+            {
+                printf("| %d |",mat[i][j]);
+            }
+            else
+            {
+                 printf(" ");
+            }
         }
         printf("\n");
     }
@@ -129,9 +143,15 @@ void right(int mat[][4])
     {
         for(int j=0;j<4;j++)
         {
-            printf("%d",mat[i][j]);
+            if(mat[i][j])
+            {
+                printf("| %d |",mat[i][j]);
+            }
+            else
+            {
+                 printf(" ");
+            }
         }
-        printf("\n");
     }
 }
 void left(int mat[][4])
@@ -158,8 +178,14 @@ void left(int mat[][4])
     {
         for(int j=0;j<4;j++)
         {
-            printf("%d",mat[i][j]);
+            if(mat[i][j])
+            {
+                printf("| %d |",mat[i][j]);
+            }
+            else
+            {
+                 printf(" ");
+            }
         }
-        printf("\n");
     }
 }
