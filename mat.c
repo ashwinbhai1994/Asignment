@@ -1,9 +1,5 @@
 //
 //  main.c
-//  Poo
-//
-//  Created by Bharadwaj on 15/01/16.
-//  Copyright © 2016 Bharadwaj. All rights reserved.
 //
 
 #include <stdio.h>
