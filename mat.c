@@ -1,191 +1,130 @@
 //
 //  main.c
-//  2048
+//  Poo
 //
+//  Created by Bharadwaj on 15/01/16.
+//  Copyright © 2016 Bharadwaj. All rights reserved.
 //
 
 #include <stdio.h>
-void upper(int mat[4][4]);
-void lower(int mat[4][4]);
-void right(int mat[4][4]);
-void left(int mat[4][4]);
+void swapu(int * ,int *);
+void upper(int [3][3]);
+void print(int (*)[3]);
+void down(int [3][3]);
+void left(int [3][3]);
+void right(int [3][3]);
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    int mat[4][4]={
-        {0,2,3,4},{5,0,1,6},{3,4,5,6},{0,0,0,0}
-    };
-    char tes;
-    
-    printf("Enter the desired direction");
-    for(int i=0;i<100;i++)
-    {
-        scanf("%c",&tes);
-        switch (tes)
-        {
-                case 'u':
-                {
-                    upper(mat);
-                }
-                case 'd':
-                {
-                    lower(mat);
-                }
-                case 'r':
-                {
-                    right(mat);
-                }
-                case 'l':
-                {
-                    left(mat);
-                }
+   char ch;
+    int arr[3][3]={1,0,3,4,5,6,7,8,9};
+    do{
+        scanf("%c",&ch);
+        switch (ch) {
+            case 'U':
+                upper(arr);
+                break;
+            case 'D':
+                down(arr);
+                break;
+            case 'L':
+                left(arr);
+                break;
+            case 'R':
+                right(arr);
+                break;
         }
         
-        
-    }
+    }while(ch!='Q');
+    return 0;
 }
-
-    
-     void upper(int mat[][4])
-     {
-         for(int row=0; row<4 ;row++)
-         {
-             for(int col=0; col<4 ;col++)
-             {
-                 if(!mat[col][row])
-                 {
-                     for(int k=col+1; k<4 ;k++)
-                     {
-                         if(mat[k][row])
-                         {
-                             mat[col][row]=mat[k][row];
-                             mat[k][row]=0;
-                             break;
-                         }
-                     }
-                 }
-             }
-         }
-         for(int i=0;i<4;i++)
-         {
-             for(int j=0;j<4;j++)
-             {
-                 if(mat[i][j])
-                 {
-                    printf("| %d |",mat[i][j]);
-                 }
-                 else
-                 {
-                     printf(" ");
-                 }
-             }
-             printf("\n");
-         }
-     }
-
- void lower(int mat[][4])
-{
-    for(int row=3; row>=0 ;row--)
+    void upper(int arr[][3])
     {
-        for(int col=3; col>=0 ;col--)
+        for(int i=0;i<3;i++)
         {
-            if(!mat[col][row])
+            for(int j=0;j<3;j++)
             {
-                for(int k=col-1; k>=0 ;k--)
+                if(arr[j][i]==0)
                 {
-                    if(mat[k][row])
-                    {
-                        mat[col][row]=mat[k][row];
-                        mat[k][row]=0;
-                        break;
-                    }
+                    swapu(&arr[j][i],&arr[j+1][i]);
+                    break;
                 }
             }
         }
+        print(arr);
     }
-    for(int i=0;i<4;i++)
+void down(int arr[][3])
+{
+    for(int i=2;i>=0;i--)
     {
-        for(int j=0;j<4;j++)
+        for(int j=2;j>=0;j--)
         {
-            if(mat[i][j])
+            if(arr[j][i]==0)
             {
-                printf("| %d |",mat[i][j]);
+                
+                swapu(&arr[j-1][i], &arr[j][i]);
+                break;
             }
-            else
+        }
+    }
+    print(arr);
+}
+void left(int arr[][3])
+{
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            if(arr[i][j]==0)
             {
-                 printf(" ");
+                //if(j!=2 || j!=0)
+                {
+                    swapu(&arr[i][j], &arr[i][j+1]);
+                    break;
+                }
+               
+            }
+        }
+    }
+    print(arr);
+}
+void right(int arr[][3])
+{
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            if(arr[i][j]==0)
+            {
+                swapu(&arr[i][j], &arr[i][j-1]);
+                break;
+            }
+        }
+    }
+    print(arr);
+}
+   
+    
+ void print(int arr[][3])
+{
+    for(int r=0;r<3;r++)
+    {
+        for(int c=0;c<3;c++)
+        {
+            if(arr[r][c])
+            {
+                printf("%d",arr[r][c]);
+            }
+            else{
+                printf(" ");
             }
         }
         printf("\n");
     }
 }
-
-void right(int mat[][4])
+void swapu(int *a,int *b)
 {
-    for(int row=3; row>=0 ;row--)
-    {
-        for(int col=3; col>=0 ;col--)
-        {
-            if(!mat[row][col])
-            {
-                for(int k=col-1; k>=0 ;k--)
-                {
-                    if(mat[row][k])
-                    {
-                        mat[row][col]=mat[row][k];
-                        mat[row][k]=0;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    for(int i=0;i<4;i++)
-    {
-        for(int j=0;j<4;j++)
-        {
-            if(mat[i][j])
-            {
-                printf("| %d |",mat[i][j]);
-            }
-            else
-            {
-                 printf(" ");
-            }
-        }
-    }
-}
-void left(int mat[][4])
-{
-    for(int row=0; row<4 ;row++)
-    {
-        for(int col=0; col<4 ;col++)
-        {
-            if(!mat[row][col])
-            {
-                for(int k=col+1; k<4 ;k++)
-                {
-                    if(mat[row][k])
-                    {
-                        mat[row][col]=mat[row][k];
-                        mat[row][k]=0;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    for(int i=0;i<4;i++)
-    {
-        for(int j=0;j<4;j++)
-        {
-            if(mat[i][j])
-            {
-                printf("| %d |",mat[i][j]);
-            }
-            else
-            {
-                 printf(" ");
-            }
-        }
-    }
+    int temp=0;
+    temp=*a;
+    *a=*b;
+    *b=temp;
 }
