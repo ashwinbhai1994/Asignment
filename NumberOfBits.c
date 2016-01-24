@@ -11,9 +11,8 @@ int main(int argc, const char * argv[])
     scanf("%d",&n);
     while(n!=0)
     {
-        r=n%2;
+        
         n=n/2;
-        rem=rem*10+r;
         count++;
     }
     printf("%d",count);
