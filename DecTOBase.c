@@ -4,7 +4,7 @@ void AllBase(int,int);
 int main()
 {
     int num,base;
-    printf("Enter the number:");
+    printf("Enter the number");
     scanf("%d",&num);
     printf("Base");
     scanf("%d",&base);
