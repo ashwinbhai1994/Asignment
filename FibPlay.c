@@ -20,12 +20,14 @@ int big(int num)
 }
 int main()
 {
-    int num = 100;
+    int num;
+    scanf("%d",&num);
     while (num>0)
     {
         int k = big(num);
-        printf("%d",k);
+        printf("%d\t",k);
         num = num-k;
     }
     return 0;
 }
+//output 100 89 8 3 || 5 5
