@@ -41,6 +41,7 @@ int main(int argc, const char * argv[]) {
     if(leng(bigg,num,ll)>leng(biggest,num,ll))
     {
         biggest=bigg;
+        empty(hash,num);
     }
     printf("%s",biggest);
     return 0;
@@ -59,16 +60,24 @@ int hashset(char *ans,char single,int num,int flag)
     int i;
     for(i=0;i<num;i++)
     {
-        if(*(ans+i)!=single)
+        if(*(ans+i)==single)
         {
-            continue;
+            flag=1;
+            break;
         }
         else
         {
-            flag=1;
+            flag=0;
         }
     }
-    return flag;
+    if(flag)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 int leng(char *arr,int num,int ll)
 {
