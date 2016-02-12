@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 void average(int n,float avg[]);
-void topmark(int i,int top[])
+void topmark(int i,int top[]);
 struct str
 {
     int mar[5];
