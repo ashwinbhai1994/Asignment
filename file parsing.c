@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
     for(i=0;i<n;i++)
     {
         fscanf(fp, "%d,%[^,],%d,%d,%d,%d,%d", &s[i].no, s[i].name,&s[i].mar[0], &s[i].mar[1], &s[i].mar[2],&s[i].mar[3],&s[i].mar[4]);
-            topmark(i,top);
+        topmark(i,top);
     }
     for(i=0;i<5;i++)
     {
