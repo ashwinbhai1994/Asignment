@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 #include<stdlib.h>
 void valentine(int count,int num);
@@ -7,7 +6,7 @@ void evens(int num);
 void tens(int num);
 int main()
 {
-   long int n=1123456;
+   long int n=78699;
     int i=0;
     int t=0;
     int tt;
@@ -20,6 +19,8 @@ int main()
         n=n/10;
         count++;
     }
+  
+    
     tc=count;
     n=num;
     arr=(int*)malloc(sizeof(int)*count);
@@ -33,7 +34,7 @@ int main()
         tc--;
     }
     tc=count;
-   
+    count=count-1;
     for(i=0;*(arr+i)!=-1;i++)
     {
         if(count>6)
@@ -50,13 +51,16 @@ int main()
                     evens(tt);
                 }
                 count=count-2;
+                i+=2;
             }
             else
             {
                 single(*(arr+i));
-                count--;
+                count=count-1;
+                i=i+1;
             }
             printf(" Crores ");
+            
         }
         if(count>4)
         {
@@ -72,14 +76,15 @@ int main()
                     evens(tt);
                 }
                 count=count-2;
+                i=i+2;
             }
             else
             {
                 single(*(arr+i));
                 count--;
+                i++;
             }
             printf(" lakhs ");
-            
         }
         if(count>2)
         {
@@ -94,27 +99,34 @@ int main()
                 {
                     evens(tt);
                 }
+                i=i+2;
                 count=count-2;
             }
             else
             {
                 single(*(arr+i));
+                i++;
                 count--;
             }
-            printf(" thousand and ");
+            
+                printf(" thousand and ");
+            
         }
         if(count<=2)
         {
-            if(count==2 || count==0)
+            if(count==2)
             {
                 valentine(count,*(arr+i));
+                i=i+1;
+                count--;
             }
             if(count==1)
             {
-                tt=*(arr+1)*10+ *(arr+0);
+                tt=*(arr+i)*10+ *(arr+i+1);
                 if(tt>19)
                 {
-                    valentine(count, *(arr+i));
+                    tens(tt);
+                    
                 }
                 else
                 {
@@ -130,7 +142,10 @@ void valentine(int count,int num)
     switch (count) {
         case 2:
             single(num);
-            printf("Hundred ");
+            if(num!=0)
+            {
+                printf("Hundred ");
+            }
             break;
         case 1:
             tens(num);
@@ -182,31 +197,43 @@ void single(int rem)
 }
 void tens(int num)
 {
-    
-    switch (num) {
+   
+    int rem;
+    int n;
+    rem=num%10;
+    n=num/10;
+    switch (n) {
         case 2:
             printf("twenty ");
+            single(rem);
             break;
         case 3:
             printf("thirty ");
+            single(rem);
             break;
         case 4:
             printf("fourty ");
+            single(rem);
             break;
         case 5:
             printf("fifty ");
+            single(rem);
             break;
         case 6:
             printf("sixty ");
+            single(rem);
             break;
         case 7:
             printf("seventy ");
+            single(rem);
             break;
         case 8:
             printf("eighty ");
+            single(rem);
             break;
         case 9:
             printf("ninty ");
+            single(rem);
             break;
         default:
             break;
@@ -246,5 +273,4 @@ void evens(int num)
         default:
             break;
     }
-    
 }
