@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 void valentine(int count,int num);
@@ -6,9 +7,9 @@ void evens(int num);
 void tens(int num);
 int main()
 {
-   long int n=78699;
+   long int n;
+    scanf("%ld",&n);
     int i=0;
-    int t=0;
     int tt;
     long int num=n;
     int *arr;
