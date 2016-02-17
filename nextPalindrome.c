@@ -1,11 +1,3 @@
-//
-//  main.c
-//  nextPalindrome.c
-//
-//  Created by Bharadwaj on 17/02/16.
-//  Copyright © 2016 Bharadwaj. All rights reserved.
-//
-
 #include <stdio.h>
 #include<string.h>
 #include<stdlib.h>
