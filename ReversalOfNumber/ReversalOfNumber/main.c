@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-int main(int argc, const char * argv[]) {
+int main() {
     int rev=0;
     int n=0;
     printf("Enter the number");

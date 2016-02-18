@@ -12,9 +12,11 @@ int main(int argc, const char * argv[]) {
     {
         for(int j=0;j<3;j++)
         {
+            int k=i & (1<<j);
+            printf("k=%d i=%d j=%d\n\n",k,i,j);
             if(i & (1<<j))
             {
-                printf("%d",arr[j]);
+                printf("%d",j);
             }
         }
         printf("\n");

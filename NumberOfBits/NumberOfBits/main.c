@@ -3,21 +3,20 @@
 //  NumberOfBits
 //
 
-#include <stdio.h>
 
-int main(int argc, const char * argv[])
+#include<stdio.h>
+int main()
 {
-    int rem=0,r,n,count=0;
-    scanf("%d",&n);
-    while(n!=0)
+    int number,bits=0,number1;
+    printf("\n Enter a number: ");
+    scanf("%d",&number);
+    number1=number;
+    do
     {
-        r=n%2;
-        n=n/2;
-        rem=rem*10+r;
-        count++;
-    }
-    printf("%d",count);
+        number1/=2;
+        bits++;
+    }while(number1>0);
+    printf("\n The number of bits required to store %d is: %d",number,bits);
     return 0;
 }
-
 /// Input 9 output 4 Input 5 output 3
