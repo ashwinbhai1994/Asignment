@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-void swap(char *str1,char *str2);
 struct str
 {
 	int mar[5];
