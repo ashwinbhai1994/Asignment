@@ -12,12 +12,13 @@ struct date
 				  };
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 char Gstr[10]={0};
 char* MonthName(int month);
 char* Pre_Mon_Name(int month);
 int NUMBEROFDAYS();
 void DateBefore(int n);
-char* Difference_Days(int n);
+int Difference_Days();
 char* Week_Day_Name(int year,int C_month,int date);
 int main(int argc, char const *argv[])
 {
@@ -31,7 +32,7 @@ int main(int argc, char const *argv[])
 	char *month_name;
 	char *prev_month_name;
 	char *day_name;
-	char *diff_days;
+	int diff_days;
 	int n;
 	int num_of_Days;
 	scanf("%d/%d/%d",&s.year,&s.month,&s.date);
@@ -57,30 +58,119 @@ int main(int argc, char const *argv[])
 	scanf("%d",&n);
 	DateBefore(n);
 	printf("%s\n",Gstr);
-	diff_days=Difference_Days(n);
-	printf("%s\n",diff_days);
+	diff_days=Difference_Days();
+	printf("%d\n",diff_days);
 	return 0;
 }
-char* Difference_Days(int n)
+int Difference_Days()
 {
+	char date[15];
+	char date2[15];
 	int i=0;
-	char* str=(char*)malloc(100);
-	//char* str=(char*)malloc((n*3*sizeof(char))+n);
-	char* ans;
-	int pole=s.date;
-	while(n--)
+	int month_array[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+	printf("Enter the biggest of 2 dates at first\n");
+	scanf("%s",date);
+	printf("Enter the other date\n");
+	scanf("%s",date2);
+	int day=atoi(strtok(date,"/"));
+	int month=atoi(strtok(NULL,"/"));
+	int year=atoi(strtok(NULL,"/"));
+	int leap=0;
+	int leap1=0;
+	int days=0;
+	if(year%400==0 && (year%4==0)&&(year%100!=0))
 	{
-		ans=Week_Day_Name(s.year,s.months[s.month-1],pole--);
-		sprintf(str,"%s",ans);
-		for(int k=0;str[k]!=0;k++)
-		{
-			ans[i]=str[k];
-			i++;
-		}
-		ans[i++]=',';
+		leap=1;
+		month_array[1]=29;
 	}
-	ans[i++]=0;
-	return ans;
+
+	int day2=atoi(strtok(date2,"/"));
+	int month2=atoi(strtok(NULL,"/"));
+	int year2=atoi(strtok(NULL,"/"));
+	if(year2%400==0 && (year2%4==0)&&(year2%100!=0))
+	{
+		leap1=1;
+	}
+	
+	if(year2==year)
+	{
+		if(month>month2)
+		{
+			days=days+day;
+			days=(days+month_array[month2-1])-day2;
+		}
+		else if(month<month2)
+		{
+			days=days+day2;
+			days=(days+month_array[month-1])-day;
+		}
+		else if(month==month2)
+		{
+			days=day - day2;
+		}
+	}
+	else if(year>year2)
+	{
+		int diff=year-year2;
+		while(diff>1)
+		{
+			if(year2%400==0 ||((year2%4==0)&&(year2%100==0)))
+			{
+				days=days+366;
+				year2++;
+				diff--;
+			}
+			else
+			{
+				days=days+365;
+				year2++;
+				diff--;
+			}
+		}
+		if(month>1)
+		{
+			printf("month %d \n",month);
+			days=days+day;
+			for(int i=0;i<month-1;i++)
+			{
+				days=days+month_array[i];
+			}
+			if(month2<12)
+			{
+				for(i=11;i>=month2;i--)
+				{
+					days=days+month_array[i];
+				}
+				days=days+day2;
+			}
+			else
+			{
+				printf("month12 %d \n",month);
+				days=days+day2;
+			}
+		}
+		else
+		{
+			days=days+day;
+			if(month2<12)
+			{
+				for(i=11;i>=month2;i--)
+				{
+					days=days+month_array[i];
+				}
+				days=days+(month_array[month2-1]- day2);
+			}
+			else
+			{
+				days=days+(month_array[month2-1]- day2);
+			}
+		}
+	}
+	else
+	{
+		printf("Under Maintenance !!!!!\n");
+	}
+	return days;
 }
 void DateBefore(int n)
 {
