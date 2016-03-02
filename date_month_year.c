@@ -4,6 +4,9 @@ struct date
 	char name_month[12][5];
 	char days[7][5];
 	int Year_Date[12];
+	char Str_date[15];
+	char date1[15];
+	char date2[15];
 	int year,month,date;
 }s={{0,3,3,6,1,4,6,2,5,0,3,5},
 	{"Jan","Feb","mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"},
@@ -14,6 +17,7 @@ struct date
 #include<stdlib.h>
 #include<string.h>
 char Gstr[10]={0};
+int CURRENTDATE(int n);
 char* MonthName(int month);
 char* Pre_Mon_Name(int month);
 int NUMBEROFDAYS();
@@ -35,10 +39,11 @@ int main(int argc, char const *argv[])
 	int diff_days;
 	int n;
 	int num_of_Days;
-	scanf("%d/%d/%d",&s.year,&s.month,&s.date);
-	printf("current year %d\n",s.year);
-	printf("pre year %d\n",s.year-1);
-	printf("month in num %d\n",s.month);
+	scanf("%s",s.Str_date);
+	
+	s.year=atoi(strtok(s.Str_date,"/"));
+	s.month=atoi(strtok(NULL,"/"));
+	s.date=atoi(strtok(NULL,"/"));
 	
 	month_name=MonthName(s.month);
 	printf("month name %s\n",month_name );
@@ -46,7 +51,8 @@ int main(int argc, char const *argv[])
 	prev_month_name=Pre_Mon_Name((s.month-1));
 	printf("Prev month %s\n",prev_month_name);
 
-	printf("Date in num %d\n",s.date);
+	int curr_date=CURRENTDATE(s.date);
+	printf("Date in num %d\n",curr_date);
 
 	day_name=Week_Day_Name(s.year,s.months[s.month-1],s.date);
 	printf("Day name %s\n",day_name);
@@ -58,21 +64,35 @@ int main(int argc, char const *argv[])
 	scanf("%d",&n);
 	DateBefore(n);
 	printf("%s\n",Gstr);
+
+	printf("Enter the biggest of 2 dates at first\n");
+	scanf("%s",s.date1);
+	printf("Enter the second date\n");
+	scanf("%s",s.date2);
 	diff_days=Difference_Days();
 	printf("%d\n",diff_days);
+	
+
 	return 0;
+}
+int CURRENTDATE(int n)
+{
+	if(n>1)
+	{
+		return n;
+	}
+	else
+	{
+		return 0;
+	}
 }
 int Difference_Days()
 {
-	char date[15];
-	char date2[15];
+	
 	int i=0;
 	int month_array[12]={31,28,31,30,31,30,31,31,30,31,30,31};
-	printf("Enter the biggest of 2 dates at first\n");
-	scanf("%s",date);
-	printf("Enter the other date\n");
-	scanf("%s",date2);
-	int day=atoi(strtok(date,"/"));
+	
+	int day=atoi(strtok(s.date1,"/"));
 	int month=atoi(strtok(NULL,"/"));
 	int year=atoi(strtok(NULL,"/"));
 	int leap=0;
@@ -84,7 +104,7 @@ int Difference_Days()
 		month_array[1]=29;
 	}
 
-	int day2=atoi(strtok(date2,"/"));
+	int day2=atoi(strtok(s.date2,"/"));
 	int month2=atoi(strtok(NULL,"/"));
 	int year2=atoi(strtok(NULL,"/"));
 	if(year2%400==0 && (year2%4==0)&&(year2%100!=0))
@@ -174,7 +194,6 @@ int Difference_Days()
 }
 void DateBefore(int n)
 {
-	
 	int tMon=0;
 	int tYear=s.year;
 	int tDate=0;
