@@ -7,6 +7,11 @@ void reverse(int arr[],int num);
 int findLength(int a);
 void printarr(int arr[],int num);
 void wholeNew(int arr[],int n);
+//1.Check whether the number size if of Odd or even 
+//2.if the number is odd 
+//	2.a.The number should be divided into two parts left and right 
+//	2.b.If the left part is greater than right Copy left side to right 
+//	2.c.If the right part is greatert than left part Copy right to left and Increment middle by 1
 int main()
 {
 	int n;
