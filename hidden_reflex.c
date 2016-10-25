@@ -108,6 +108,7 @@ void wholeNew(int arr[],int n)
 		mid--;
 		right++;
 	}
+	printf("%d %d\n",mid,right );
 	if(arr[mid]!=arr[right] )
 	{
 		flag=0;
@@ -119,6 +120,7 @@ void wholeNew(int arr[],int n)
 		else
 		{
 			copy2(left+1,n/2,arr,right);
+			arr[n-1]=arr[0];
 			printarr(arr,n);
 		}
 	}
@@ -141,7 +143,7 @@ void printarr(int arr[],int num)
 void copy1(int s,int s1,int arr[],int e)
 {
 	int i=0;
-
+	
 	for(i=s;i<s1;i++)
 	{
 		arr[i]=arr[e];	
@@ -151,11 +153,9 @@ void copy1(int s,int s1,int arr[],int e)
 }
 void copy2(int s,int s1,int arr[],int e)
 {
-	int i=0;
-
-	for(i=s;i<=s1;i++)
+	int i=0;	
+	for(i=s;i<s1;i++)
 	{
-		printf("i %d e %d\n",i,e);
 		arr[i]=arr[e];	
 		e--;
 	}
