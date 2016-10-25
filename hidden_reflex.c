@@ -8,10 +8,15 @@ int findLength(int a);
 void printarr(int arr[],int num);
 void wholeNew(int arr[],int n);
 //1.Check whether the number size if of Odd or even 
+//	1.a.Check if all the elements are 9 If yes then 1 to n-1 0 is printed 
+//	1.a.1 is printed at 0th and nth index 
 //2.if the number is odd 
 //	2.a.The number should be divided into two parts left and right 
 //	2.b.If the left part is greater than right Copy left side to right 
 //	2.c.If the right part is greatert than left part Copy right to left and Increment middle by 1
+//3.if the number is even:
+//	3.a.Do the same as odd put mid element is (n/2)-1
+//
 int main()
 {
 	int n;
