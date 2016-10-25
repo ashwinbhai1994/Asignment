@@ -108,7 +108,6 @@ void wholeNew(int arr[],int n)
 		mid--;
 		right++;
 	}
-	printf("%d %d\n",mid,right );
 	if(arr[mid]!=arr[right] )
 	{
 		flag=0;
