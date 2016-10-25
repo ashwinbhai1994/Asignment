@@ -3,6 +3,7 @@
 int allarenine(int arr[],int num);
 void incrementMidAlone(int arr[],int mid);
 void copy1(int s,int s1,int arr[],int e);
+void copy2(int s,int s1,int arr[],int e);
 void reverse(int arr[],int num);
 int findLength(int a);
 void printarr(int arr[],int num);
@@ -36,7 +37,10 @@ int main()
 			}
 			printf("1");
 		}
-		wholeNew(arr,num);
+		else
+		{
+			wholeNew(arr,num);
+		}
 	}
 	else
 	{
@@ -91,10 +95,9 @@ int main()
 }
 void wholeNew(int arr[],int n)
 {
-	printf("value of n%d\n",n );
 	int mid=(n/2)-1;
 	int temp_mid=mid;
-	printf("in\n");
+
 	int right=mid+1;
 	int temp_right=right;
 	int left=mid-1;
@@ -110,12 +113,12 @@ void wholeNew(int arr[],int n)
 		flag=0;
 		if(arr[mid]>arr[right])
 		{
-			copy1(right,n,arr,mid);
+			copy2(right,n,arr,mid);
 			printarr(arr,n);
 		}
 		else
 		{
-			copy1(left+1,n/2,arr,right);
+			copy2(left+1,n/2,arr,right);
 			printarr(arr,n);
 		}
 	}
@@ -141,6 +144,18 @@ void copy1(int s,int s1,int arr[],int e)
 
 	for(i=s;i<s1;i++)
 	{
+		arr[i]=arr[e];	
+		e--;
+	}
+	
+}
+void copy2(int s,int s1,int arr[],int e)
+{
+	int i=0;
+
+	for(i=s;i<=s1;i++)
+	{
+		printf("i %d e %d\n",i,e);
 		arr[i]=arr[e];	
 		e--;
 	}
