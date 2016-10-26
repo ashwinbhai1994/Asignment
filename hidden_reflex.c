@@ -4,7 +4,6 @@
 int allarenine(int arr[],int num);
 void incrementMidAlone(int arr[],int mid);
 void copy1(int s,int s1,int arr[],int e);
-void copy2(int s,int s1,int arr[],int e);
 void reverse(int arr[],int num);
 int findLength(int a);
 void printarr(int arr[],int num);
