@@ -1,8 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
+//All the functions used till now !
 int allarenine(int arr[],int num);
 void incrementMidAlone(int arr[],int mid);
 void copy1(int s,int s1,int arr[],int e);
+void copy2(int s,int s1,int arr[],int e);
 void reverse(int arr[],int num);
 int findLength(int a);
 void printarr(int arr[],int num);
@@ -157,9 +159,11 @@ void wholeNew(int arr[],int n)//this whole block of code is for even number of e
 		}
 		else
 		{
-			copy1(left+1,n/2,arr,right);
+			
+			incrementMidAlone(arr,right-1);
+			copy1(n/2,n,arr,(n/2)-1);
 			//copying right side
-			arr[n-1]=arr[0];
+			
 			//this is tittle tricky ! 
 			//for example 1234
 			// the answer without this line is 1224
@@ -191,7 +195,6 @@ void printarr(int arr[],int num)
 void copy1(int s,int s1,int arr[],int e)//for odd and even copy func
 {
 	int i=0;
-	
 	for(i=s;i<s1;i++)
 	{
 		arr[i]=arr[e];	
@@ -199,6 +202,7 @@ void copy1(int s,int s1,int arr[],int e)//for odd and even copy func
 	}
 	
 }
+
 
 void incrementMidAlone(int arr[],int mid)// func to increment middle part of the array both in odd and even 
 {
