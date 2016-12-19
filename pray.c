@@ -8,7 +8,8 @@ int main()
 	int al=0;
 	int left=0;
 	int sp=0;
-	int space=strlen(str)-1;
+	int j=0;
+	int space=2*strlen(str)-2;
 	int half=strlen(str)/2;
 	for(i=0;i<strlen(str);i++)
 	{
@@ -16,7 +17,8 @@ int main()
 		{
 			printf(" ");
 		}
-		space--;
+		space=space-2;
+	
 		for(al=0;al<=i;al++)
 		{
 			printf("%c",str[al+half] );
@@ -31,6 +33,10 @@ int main()
 			{
 				printf("%c",str[left]);
 			}
+		}
+		for(j=0;j<i;j++)
+		{
+		printf(" ");
 		}
 		printf("\n");
 	}
